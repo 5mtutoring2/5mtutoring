@@ -2,6 +2,7 @@ package org.zerock.fmt.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.NoArgsConstructor;
@@ -31,12 +32,19 @@ public class LoginController {
 	}
 	
 	//회원가입폼 - 학생
-	@RequestMapping("/signUp_student")
+	@GetMapping("/signUp_student")
 	public String signUp_student() {
-		log.trace("signUp_student() invoked.");
-		
+		log.trace("학생 회원가입 폼");	
 		return "login/1-04_signUpStudent";
 	}
+	
+//	@PostMapping("/signUp_student")
+//	public String signUpStudent() {
+//		
+//		
+//		return "redirect:/login";
+//	}
+	
 	
 	//회원가입폼 - 튜터
 	@RequestMapping("/signUp_tutor")

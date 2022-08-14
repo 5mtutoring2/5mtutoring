@@ -3,7 +3,7 @@ package org.zerock.fmt.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.zerock.fmt.domain.TutorVO;
+import org.zerock.fmt.domain.UserVO_tutor;
 
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -55,10 +55,10 @@ public class AdminController {
 	public String tutorInfo(Model model) {
 		log.info("회원정보조회");
 		
-		TutorVO tutor = 
-				new TutorVO("1234@email", "튜터닉네임", "000000", "11월11일", "대핟생", "수학", "이거는첨부파일");
+//		TutorVO tutor = 
+//				new TutorVO("1234@email", "튜터닉네임", "000000", "11월11일", "대핟생", "수학", "이거는첨부파일");
 		
-		model.addAttribute("tutor",tutor);
+//		model.addAttribute("tutor",tutor);
 		
 		
 		return "admin/8-01_tutorInfo";

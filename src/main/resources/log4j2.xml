@@ -12,8 +12,8 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="org.zerock.myapp" level="trace" />
-        <Logger name="org.zerock.controller" level="trace" />
+        <Logger name="org.zerock.fmt" level="trace" />
+        <Logger name="org.zerock.controller" level="debug" />
         <Logger name="org.springframework" level="info" />
         <Logger name="com.zaxxer.hikari" level="warn" />
        

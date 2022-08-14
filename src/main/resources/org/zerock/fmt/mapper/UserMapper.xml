@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- <mapper namespace="org.zerock.fmt.mapper.UserMapper"> -->
+
+    <!-- <resultMap id="StudentVO" type="org.zerock.fmt.domain.StudentVO">
+        <id column="st_no" property="st_no"/>
+    	<result column="user_email" property="userEmail"/>
+        <result column="st_school" property="stSchool"/>
+        <result column="st_grade" property="stGrade"/>
+    </resultMap>
+
+    <resultMap id="UserVO" type="org.zerock.fmt.domain.UserVO">
+        <id column="user_email" property="userEmail"/>
+        <result column="user_pw" property="userPw"/>
+        <result column="user_nick" property="userNick"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_gender" property="userGender"/>
+        <result column="user_birth" property="userBirth"/>
+        <result column="user_phone" property="userPhone"/>
+        <collection column="StudentVO" property="strudentVO"/>
+    </resultMap> -->
+
+    <!-- <select id="studentInfo" parameterType="String" resultType="org.zerock.fmt.domain.UserVO">
+        SELECT
+            u.user_email,
+            u.user_pw,
+            u.user_nick,
+            u.user_name,
+            u.user_gender,
+            u.user_birth,
+            u.user_phone,
+            
+            st.st_school,
+            st.st_grade 
+        FROM tbl_user u LEFT OUTER JOIN tbl_student st
+        ON u.user_email=st.user_email
+        WHERE u.user_email=#{user_email}
+            
+    </select> -->
+
+    <!-- <select id="tutorInfo" parameterType="String" resultType="org.zerock.fmt.domain.UserVO">
+        SELECT
+            u.user_email,
+            u.user_pw,
+            u.user_nick,
+            u.user_name,
+            u.user_gender,
+            u.user_birth,
+            u.user_phone,
+            tt.college,
+            tt.subject,
+            tt.depart,
+            tt.certificate 
+        FROM tbl_user u LEFT OUTER JOIN tbl_tutor tt
+        ON u.user_email=tt.user_email
+        WHERE u.user_email=#{user_email}
+
+    </select> -->
+
+
+    <!-- <insert id="insertStudent">
+        INSERT INTO tbl_user
+                (user_email, user_pw, user_nick, user_name, 
+                user_gender, user_birth, user_phone, user_group)
+        
+                
+        INSERT INTO tbl_student
+             (user_email, st_school, st_grade)
+            VALUES(#{user_email}, #{st_school}, #{st_grade})
+     </insert>
+    </mapper> -->
+        <!-- VALUES(#{user_email}, #{user_pw}, #{user_nick}, #{user_name},
+         #{user_gender}, to_date(#{user_birth}, 'yyyy/mm/dd'), #{user_phone}, #{user_group}) -->
