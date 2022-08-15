@@ -1,18 +1,16 @@
 
 let isvalid=false;
 
-let eamil = document.querySelector("#email");
-let password = document.querySelector("#password")
+let eamil = document.querySelector("#user_email");
+let password = document.querySelector("#user_pw")
 let passwordCheck = document.querySelector("#passwordCheck");
-let nickName = document.querySelector("#nickName")
-let userName = document.querySelector("#userName")
-let yy = document.querySelector("#yy")
-let mm = document.querySelector("#mm")
-let dd = document.querySelector("#dd")
-let gender = document.querySelector("#gender") 
-let phone = document.querySelector("#phone")
-let school = document.querySelector("#school")
-let grade = document.querySelector("#grade")
+let nickName = document.querySelector("#user_nick")
+let userName = document.querySelector("#user_name")
+let birth = document.querySelector("#user_birth")
+let gender = document.querySelector("#user_gender") 
+let phone = document.querySelector("#user_phone")
+let school = document.querySelector("#st_school")
+let grade = document.querySelector("#st_grade")
 let tutorFile = document.querySelector("#tutor_signFile")
 
 
@@ -86,9 +84,9 @@ userName.addEventListener("input",function(){
 })////userName 
 
 
-yy.addEventListener("input",function(){
+birth.addEventListener("input",function(){
   let inputData = this.value;
-  isvalid = inputData.length===4;
+  isvalid = inputData.length===8;
 
   if(!isvalid){
     this.classList.remove("is-valid");
@@ -98,32 +96,6 @@ yy.addEventListener("input",function(){
     this.classList.add("is-valid");
   }//if-else
 })////yy 
-
-mm.addEventListener("input",function(){
-  let inputData = this.value;
-  isvalid = inputData.length > 0;
-
-  if(!isvalid){
-    this.classList.remove("is-valid");
-    this.classList.add("is-invalid");
-  } else {
-    this.classList.remove("is-invalid");
-    this.classList.add("is-valid");
-  }//if-else
-})////mm 
-
-dd.addEventListener("input",function(){
-  let inputData = this.value;
-  isvalid = inputData.length >=1;
-
-  if(!isvalid){
-    this.classList.remove("is-valid");
-    this.classList.add("is-invalid");
-  } else {
-    this.classList.remove("is-invalid");
-    this.classList.add("is-valid");
-  }//if-else
-})////dd 
 
 gender.addEventListener("input",function(){
   let inputData = this.value;
@@ -184,10 +156,14 @@ function login() {
     text: '5분과외 회원가입이 완료되었습니다.', 
     icon: 'success',      
     confirmButtonColor: '#3085d6',
-  }).then(function(){
-    document.location.href="/login/home"
-  });
+  })
+  // .then(function(){
+  //   document.location.href="/login/home"
+  // });
 };//login
+
+// --------------------------------------------------------------------
+
 
 function loginTutor() {
   Swal.fire({

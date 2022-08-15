@@ -4,75 +4,99 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<mapper namespace="org.zerock.fmt.mapper.UserMapper">
 
-<!-- <mapper namespace="org.zerock.fmt.mapper.UserMapper"> -->
-
-    <!-- <resultMap id="StudentVO" type="org.zerock.fmt.domain.StudentVO">
-        <id column="st_no" property="st_no"/>
-    	<result column="user_email" property="userEmail"/>
-        <result column="st_school" property="stSchool"/>
-        <result column="st_grade" property="stGrade"/>
-    </resultMap>
-
-    <resultMap id="UserVO" type="org.zerock.fmt.domain.UserVO">
-        <id column="user_email" property="userEmail"/>
-        <result column="user_pw" property="userPw"/>
-        <result column="user_nick" property="userNick"/>
-        <result column="user_name" property="userName"/>
-        <result column="user_gender" property="userGender"/>
-        <result column="user_birth" property="userBirth"/>
-        <result column="user_phone" property="userPhone"/>
-        <collection column="StudentVO" property="strudentVO"/>
-    </resultMap> -->
-
-    <!-- <select id="studentInfo" parameterType="String" resultType="org.zerock.fmt.domain.UserVO">
-        SELECT
-            u.user_email,
-            u.user_pw,
-            u.user_nick,
-            u.user_name,
-            u.user_gender,
-            u.user_birth,
-            u.user_phone,
-            
-            st.st_school,
-            st.st_grade 
-        FROM tbl_user u LEFT OUTER JOIN tbl_student st
-        ON u.user_email=st.user_email
-        WHERE u.user_email=#{user_email}
-            
-    </select> -->
-
-    <!-- <select id="tutorInfo" parameterType="String" resultType="org.zerock.fmt.domain.UserVO">
-        SELECT
-            u.user_email,
-            u.user_pw,
-            u.user_nick,
-            u.user_name,
-            u.user_gender,
-            u.user_birth,
-            u.user_phone,
-            tt.college,
-            tt.subject,
-            tt.depart,
-            tt.certificate 
-        FROM tbl_user u LEFT OUTER JOIN tbl_tutor tt
-        ON u.user_email=tt.user_email
-        WHERE u.user_email=#{user_email}
-
-    </select> -->
-
-
-    <!-- <insert id="insertStudent">
+    <!-- 학생회원가입 -->
+    <insert id="joinStudent" parameterType="org.zerock.fmt.domain.UserVO">
         INSERT INTO tbl_user
+            (user_email, user_pw, user_nick, user_name, user_birth, user_gender, user_phone, 
+            st_school, st_grade, user_group)
+
+        VALUES(#{user_email}, #{user_pw}, #{user_nick}, #{user_name}, #{user_birth}, 
+                #{user_gender}, #{user_phone}, 
+                #{st_school}, #{st_grade}, 'Student')
+    </insert>
+
+    <!-- <insert id="joinStudent">
+        INSERT INTO tbl_user
+            (user_email, user_pw, user_nick, user_name, user_birth, user_gender, user_phone, 
+            st_school, st_grade,
+            tt_school, tt_subject, tt_certificate, tt_depart,
+            user_group, pass, user_status, hands_wallet, user_join, withdrawal_date)
+
+        VALUES(#{user_email}, #{user_pw}, #{user_nick}, #{user_name}, #{user_birth}, #{user_gender}, #{user_phone}, 
+                #{st_school}, #{st_grade},
+
+                #{tt_school,jdbcType=VARCHAR}, #{tt_subject,jdbcType=VARCHAR},
+                #{tt_certificate,jdbcType=VARCHAR},#{tt_depart,jdbcType=VARCHAR},
+
+                'Student', 'Accept', 'Active', #{hands_wallet,jdbcType=INTEGER}, CURRENT_DATE, #{withdrawal_date=jdbcType=NULL})
+    </insert> -->
+
+    <!-- 튜터회원가입 -->
+    <insert id="joinTutor">
+        INSERT INTO tbl_user
+            (user_email, user_pw, user_nick, user_name, user_birth, user_gender, user_phone, 
+            tt_school, tt_subject, tt_certificate, user_group, pass)
+
+        VALUES(#{user_email}, #{user_pw}, #{user_nick}, #{user_name}, #{user_birth}, 
+                #{user_gender}, #{user_phone}, 
+                #{tt_school}, #{tt_subject}, #{tt_certificate},
+                'Tutor','Wait')
+    </insert>
+
+
+    <!-- 정보수정 -->
+    <update id="updateUser">
+        UPDATE tbl_user
+        <set>
+            <if test="user_pw != null">     user_pw=#{user_pw},</if>
+            <if test="user_nick !=null">    user_nick=#{user_nick},</if>
+            <if test="user_name !=null">    user_name=#{user_name},</if>
+            <if test="user_gender !=null">  user_gender=#{user_gender},</if>
+            <if test="user_birth !=null">   user_birth=#{user_birth},</if>
+            <if test="user_phone !=null">   user_phone=#{user_phone},</if>
+            <if test="st_school !=null">    st_school=#{st_school},</if>
+            <if test="st_grade !=null">     st_grade=#{st_grade},</if>
+            <if test="tt_school !=null">    tt_school=#{tt_school},</if>
+            <if test="tt_subject !=null">   tt_subject=#{tt_subject},</if>
+            <if test="tt_certificate !=null">tt_certificate=#{tt_certificate},</if>
+            <if test="tt_depart !=null">    tt_depart=#{tt_depart}</if>
+        </set>
+        WHERE user_email = #{user_email}
+    </update>
+
+    <!-- 튜터가입승인 -->
+    <update id="approveTutor">
+        UPDATE tbl_user
+        SET pass='Accept'
+        WHERE user_email=#{user_email}
+    </update>
+
+    <update id="stopUser">
+        UPDATE tbl_user
+        SET user_status='STOP',
+            withdrawal_date=CURRENT_DATE
+        WHERE 
+            user_email=#{user_email}
+    </update>
+
+    
+</mapper>
+
+    <!-- 회원가입 1-->
+    <!-- <insert id="insertUser">
+        INSERT INTO tbl_user2
                 (user_email, user_pw, user_nick, user_name, 
-                user_gender, user_birth, user_phone, user_group)
+                user_gender, user_birth, user_phone, user_group,
+                st_school,st_grade, tt_school, tt_subject, tt_depart, tt_certificate)
         
-                
-        INSERT INTO tbl_student
-             (user_email, st_school, st_grade)
-            VALUES(#{user_email}, #{st_school}, #{st_grade})
-     </insert>
-    </mapper> -->
-        <!-- VALUES(#{user_email}, #{user_pw}, #{user_nick}, #{user_name},
-         #{user_gender}, to_date(#{user_birth}, 'yyyy/mm/dd'), #{user_phone}, #{user_group}) -->
+        VALUES(#{user_email}, #{user_pw}, #{user_nick}, #{user_name},
+               #{user_gender}, to_date(#{user_birth}, 'yyyy/mm/dd'), #{user_phone}, #{user_group},
+               
+               #{st_school,jdbcType=VARCHAR}, #{st_grade,jdbcType=VARCHAR}, 
+               #{tt_school,jdbcType=VARCHAR}, #{tt_subject,jdbcType=VARCHAR},
+               #{tt_depart,jdbcType=VARCHAR}, #{tt_certificate,jdbcType=VARCHAR})
+    </insert> -->
+
+        

@@ -38,7 +38,7 @@
 
                             <div class="form-group">
                                 <label for="email">이메일</label>
-                                <input type="email" class="form-control" id="email" data-kv="email"
+                                <input type="email" class="form-control" id="user_email" data-kv="email"
                                     placeholder="example@email.com" required="required" autofocus="autofocus"
                                     maxlength="25">
                                 <div class="invalid-feedback">이메일을 입력해주세요.</div>
@@ -46,7 +46,7 @@
 
                             <div class="form-group">
                                 <label for="password">비밀번호</label>
-                                <input type="password" class="form-control mt-1" id="password" data-kv="password"
+                                <input type="password" class="form-control mt-1" id="user_pw" data-kv="password"
                                     spellcheck="false" placeholder="영문 숫자 포함8~15자로 입력하세요." required>
                                 <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
                             </div>
@@ -61,7 +61,7 @@
                             <div class="form-group">
                                 <label for="nickName">닉네임</label>
                                 <div class="nick">
-                                    <input type="text" class="form-control" id="nickName" placeholder="영문 한글 숫자 2~10자"
+                                    <input type="text" class="form-control" id="user_nick" placeholder="영문 한글 숫자 2~10자"
                                         onclick="" required style="width:73%;float:left">
                                     <button type="button" class="btn btn-outline-primary mt-2" style="float: right"
                                         onclick="checkNickName()"> 중복체크</button>
@@ -72,40 +72,16 @@
 
                             <div class="form-group">
                                 <label for="userName">이름</label>
-                                <input type="text" class="form-control" id="userName" required>
+                                <input type="text" class="form-control" id="user_name" required>
                                 <div class="invalid-feedback">이름을 입력해주세요.</div>
                             </div>
 
                             <div class="form-group">
                                 <label for="userbrith">생년월일</label>
-                                <div class="bir_yy">
+                                <div class="birth">
                                     <span class="ps_box">
-                                        <input type="text" class="form-control" id="yy" placeholder="년(4자)"
+                                        <input type="text" class="form-control" id="user_birth" placeholder="년(4자)"
                                             maxlength="4">
-                                    </span>
-                                </div>
-                                <div class="bir_mm">
-                                    <span class="ps_box">
-                                        <select class="form-select" id="mm">
-                                            <option selected>월</option>
-                                            <option value="1">1월</option>
-                                            <option value="2">2월</option>
-                                            <option value="3">3월</option>
-                                            <option value="4">4월</option>
-                                            <option value="5">5월</option>
-                                            <option value="6">6월</option>
-                                            <option value="7">7월</option>
-                                            <option value="8">8월</option>
-                                            <option value="9">9월</option>
-                                            <option value="10">10월</option>
-                                            <option value="11">11월</option>
-                                            <option value="12">12월</option>
-                                        </select>
-                                    </span>
-                                </div>
-                                <div class="bir_dd">
-                                    <span class="ps_box">
-                                        <input type="text" class="form-control" id="dd" placeholder="일" maxlength="2">
                                     </span>
                                 </div>
                             </div>
@@ -113,7 +89,7 @@
 
                             <div class="form-group">
                                 <label for="gender">성별 </label>
-                                <select class="form-select" id="gender">
+                                <select class="form-select" id="user_gender">
                                     <option value="남자"> 남자 </option>
                                     <option value="여자"> 여자 </option>
                                 </select>
@@ -122,7 +98,7 @@
                             <div class="form-group">
                                 <label for="phone">휴대전화</label>
                                 <div>
-                                    <input type="text" class="form-control" id="phone" style="width:75%;float:left">
+                                    <input type="text" class="form-control" id="user_phone" style="width:75%;float:left">
                                     <button type="button" class="btn btn-outline-primary mt-2" style="float: right">
                                         인증하기</button>
                                     <div style="clear: both"></div>
@@ -133,7 +109,7 @@
                                 <div class="school">
                                     <span class="ps_box">
                                         <label for="schoolGrade"> 대학교 </label>
-                                        <select class="form-select" id="school">
+                                        <select class="form-select" id="tt_school">
                                             <option value="재학">재학생</option>
                                             <option value="졸업">졸업생</option>
                                         </select>
@@ -143,7 +119,7 @@
                                 <div class="grade">
                                     <span class="ps_box">
                                         <label for="schoolGrade"> 대표과목</label>
-                                        <select class="form-select" id="grade">
+                                        <select class="form-select" id="tt_subject">
                                             <option value="Korean">국어</option>
                                             <option value="Englesh">영어</option>
                                             <option value="Math">수학</option>
@@ -156,7 +132,7 @@
                             <div class="form-group mt-2">
                                 <form action="#" method="post" enctype="multipart/form-data">
                                     <label for="formFile" class="form-label">재학/졸업증명서 첨부</label>
-                                    <input class="form-control" type="file" id="tutor_signFile">
+                                    <input class="form-control" type="file" id="tt_caetificate">
                                     <div class="invalid-feedback">증명서를 첨부해주세요.</div>
                                 </form>
                             </div>

@@ -1,11 +1,16 @@
 package org.zerock.fmt.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.zerock.fmt.domain.UserVO;
+import org.zerock.fmt.exception.ServiceException;
+import org.zerock.fmt.service.UserService;
 
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -14,6 +19,10 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/login")	//기본URI(Base URI)
 @Controller
 public class LoginController {
+	
+	@Setter(onMethod_ = @Autowired)
+	private UserService userService;
+//------------------------------------------------------------//
 	
 	//로그인화면
 	@GetMapping
@@ -38,12 +47,17 @@ public class LoginController {
 		return "login/1-04_signUpStudent";
 	}
 	
-//	@PostMapping("/signUp_student")
-//	public String signUpStudent() {
-//		
-//		
-//		return "redirect:/login";
-//	}
+	//학생회원가입 
+	@PostMapping("/signUp_student")
+	public String signUpStudent(UserVO student) throws ServiceException {
+		
+		log.info("\t + ---> " + student);
+		if(this.userService.joinStudent(student)) {
+			log.info("Controller --> Join Student success");
+		} else log.info("Controller --> join Student Fail");
+		
+		return null;
+	}
 	
 	
 	//회원가입폼 - 튜터
