@@ -25,6 +25,8 @@ public interface UserMapper {
 	//튜터 가입 
 	public abstract boolean joinTutor(UserVO newTutor) throws UserException;
 	
+	//카카오 가입
+	//네이버 가입
 	
 	//*** update 
 	//정보변경 - 마이페이지(정보수정용)
@@ -35,5 +37,7 @@ public interface UserMapper {
 	
 	//회원탈퇴 - 마이페이지(정지)
 	public abstract boolean stopUser(UserVO user) throws UserException;
+	
+	//delete xxxxxxx
 	
 }//end 

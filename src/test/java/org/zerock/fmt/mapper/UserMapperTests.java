@@ -63,7 +63,7 @@ public class UserMapperTests {
 	@Order(3)
 	@Timeout(value = 5, unit = TimeUnit.SECONDS)
 	void joinStudent() throws UserException {
-		UserVO newStudent = new UserVO("test","p","n","n","20220815","여자","01000","고등","1학년",null,null,null,null,
+		UserVO newStudent = new UserVO("te1","p","n","n","20220815","여자","01000","고등","1학년",null,null,null,null,
 							"Student",null,null,null,null,null);
 		if(this.mapper.joinStudent(newStudent)) {
 			log.info("학생회원가입완료");

@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService, InitializingBean{
 	
 
 	@Override
-	public boolean joinStudent(UserVO newStudent) throws ServiceException {
+	public boolean joinStudent(UserVO newStudent) throws ServiceException{
 		
 		try{ return this.userMapper.joinStudent(newStudent); }
 		catch( Exception e ) { throw new ServiceException(e); }

@@ -17,22 +17,6 @@
                 #{st_school}, #{st_grade}, 'Student')
     </insert>
 
-    <!-- <insert id="joinStudent">
-        INSERT INTO tbl_user
-            (user_email, user_pw, user_nick, user_name, user_birth, user_gender, user_phone, 
-            st_school, st_grade,
-            tt_school, tt_subject, tt_certificate, tt_depart,
-            user_group, pass, user_status, hands_wallet, user_join, withdrawal_date)
-
-        VALUES(#{user_email}, #{user_pw}, #{user_nick}, #{user_name}, #{user_birth}, #{user_gender}, #{user_phone}, 
-                #{st_school}, #{st_grade},
-
-                #{tt_school,jdbcType=VARCHAR}, #{tt_subject,jdbcType=VARCHAR},
-                #{tt_certificate,jdbcType=VARCHAR},#{tt_depart,jdbcType=VARCHAR},
-
-                'Student', 'Accept', 'Active', #{hands_wallet,jdbcType=INTEGER}, CURRENT_DATE, #{withdrawal_date=jdbcType=NULL})
-    </insert> -->
-
     <!-- 튜터회원가입 -->
     <insert id="joinTutor">
         INSERT INTO tbl_user
